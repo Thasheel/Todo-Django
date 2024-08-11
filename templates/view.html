@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+<!--{% load crispy_forms_tags %}-->
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+        <th scope="col">SlNo</th>
+      <th scope="col">Added Data</th>
+
+    </tr>
+  </thead>
+  <tbody>
+ {% for i in info %}
+    <tr>
+      <th scope="row">{{forloop.counter }}</th>
+      <td>{{i.text}}</td>
+      <td>
+          <a href="{% url 'update' i.id %}" class="btn btn-outline-info" >Update</a>
+      </td>
+            <td>
+          <form action="{% url 'delete' i.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit">Delete</button>
+          </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}<
